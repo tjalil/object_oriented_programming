@@ -64,8 +64,6 @@ R => (4,1,N)
 R => (4,1,E)
 M => (5,1,E)
 
-
-
 create x y and direction instance variables
 create small methods for grid size, initial state, movement, creating a new rover
 approach with name, state, behavior
