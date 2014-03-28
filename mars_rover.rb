@@ -8,109 +8,160 @@
 
 #use gets - pass a string that has MLR - program movements corresponding to M L and R
 
-class Rover
+class Grid
+  attr_accessor :x, :y
 
-  attr_accessor :x, :y, :direction
-
-  def initialize(x,y,direction)
+  def initialize(x,y)
     @x = x
     @y = y
-    @direction = direction
+  end
+
+    # puts "Grid size needed. Pass it as such: x y"
+    # grid_size = gets.chomp
+
+    # grid_array = []
+    # grid_array = grid_size.split(" ").to_a
+
+    # grid_array.map! do |num|
+    #   num.to_i
+    # end
+
+    # grid_x = grid_array[0]
+    # grid_y = grid_array[1]
+
+    # puts "Your grid is #{grid_x} by #{grid_y}"
+
+  def size
+    "#{@x} #{@y}"
   end
 end
 
-  def grid
-    puts "Grid size needed. Pass it as such: x y"
-    grid_size = gets.chomp
+class Rover < Grid
+  attr_accessor :direction
 
-    grid_array = []
-    grid_array = grid_size.split(" ").to_a
-
-    grid_array.map! do |num|
-      num.to_i
-    end
-
-    grid_x = grid_array[0]
-    grid_y = grid_array[1]
-
-    puts "Your grid is #{grid_x} by #{grid_y}"
+  def initialize(x,y,direction)
+    super(x,y)
+    @direction = direction
   end
 
   def initial_state
-    puts "For the initial state of Rover we require, x, y, and direction(N,S,E,W). Pass them as such: x y direction"
-    initial = gets.chomp
-
-    initial_array = []
-    initial_array = initial.split(" ").to_a
-    initial_direction = initial_array[-1]
-
-    #need to separate coordinates and direction OR assign number to direction so that to_i can be run on entire array
-
-    initial_array.map! do |num|
-      num.to_i
-    end
-
-    initial_x = intial_array[0]
-    initial_y = intial_array[1]
-    initial_direction = intial_array[2]
-
+    "#{@x} #{@y} #{@direction}"
   end
 
-  initial_state
+    # puts "For the initial state of Rover we require, x, y, and direction(N,S,E,W). Pass them as such: x y direction"
+    # initial = gets.chomp
 
-  def motion
-    puts "Input the set of directions you want the Rover to follow"
-    rover_motion = gets.chomp
+    # initial_array = []
+    # initial_array = initial.split(" ").to_a
+    # initial_direction = initial_array[-1]
 
-    motion_array = []
-    motion_array = rover_motion.split("").to_a
+    # #need to separate coordinates and direction OR assign number to direction so that to_i can be run on entire array
 
-    motion_array.each do |direction|
-      #if initial_direction = N and motion_array = L 
-        #new_direction = W
-      
-      #if initial_direction = S and motion_array = L
-        #new_direction = E
-      
-      #if initial_direction = E and motion_array = L 
-        #new_direction = N
+    # initial_array.map! do |num|
+    #   num.to_i
+    # end
 
-      #if initial_direction = W and motion_array = L 
-        #new_direction = S
+    # initial_x = intial_array[0]
+    # initial_y = intial_array[1]
+    # initial_direction = intial_array[2]
 
-      
+  # def motion
+  #   puts "Input the set of directions you want the Rover to follow"
+  #   rover_motion = gets.chomp
 
-      #if initial_direction = N and motion_array = R 
-        #new_direction = E
+  #   motion_array = []
+  #   motion_array = rover_motion.split("").to_a
 
-      #if initial_direction = S and motion_array = R 
-        #new_direction = W
-
-      #if initial_direction = E and motion_array = R 
-        #new_direction = S
-
-      #if initial_direction = W and motion_array = R 
-        #new_direction = N
-
-
-
-
-      #if initial_direction = N and motion_array = M 
-        #new_direction = N && new_y += 1
-
-      #if initial_direction = S and motion_array = M 
-        #new_direction = S && new_y -= 1
-
-      #if initial_direction = E and motion_array = M 
-        #new_direction = E && new_x += 1
-
-      #if initial_direction = W and motion_array = M 
-        #new_direction = W && new_x -= 1
-
-    end
-
-  end
-
-  # def new_rover
+  #   motion_array.each do |direction|
+  #   end
   # end
 
+#if initial_direction = N and motion_array = L 
+  #new_direction = W
+
+#if initial_direction = S and motion_array = L
+  #new_direction = E
+
+#if initial_direction = E and motion_array = L 
+  #new_direction = N
+
+#if initial_direction = W and motion_array = L 
+  #new_direction = S
+
+#since these are all L, maybe we can create a separate method
+
+  def go_left
+    if @direction == "N"
+      @direction = "W"
+    elsif @direction == "S"
+      @direction = "E"
+    elsif @direction == "E"
+      @direction = "N"
+    elsif @direction == "W"
+      @direction = "S"
+    end
+  end
+
+        
+#if initial_direction = N and motion_array = R 
+  #new_direction = E
+
+#if initial_direction = S and motion_array = R 
+  #new_direction = W
+
+#if initial_direction = E and motion_array = R 
+  #new_direction = S
+
+#if initial_direction = W and motion_array = R 
+  #new_direction = N
+
+#since these are all R, maybe we can create a separate method
+
+  def go_right
+    if @direction == "N"
+      @direction = "E"
+    elsif @direction == "S"
+      @direction = "W"
+    elsif @direction == "E"
+      @direction = "S"
+    elsif @direction == "W"
+      @direction = "N"
+    end
+  end
+
+
+#if initial_direction = N and motion_array = M 
+  #new_direction = N && new_y += 1
+
+#if initial_direction = S and motion_array = M 
+  #new_direction = S && new_y -= 1
+
+#if initial_direction = E and motion_array = M 
+  #new_direction = E && new_x += 1
+
+#if initial_direction = W and motion_array = M 
+  #new_direction = W && new_x -= 1
+
+#since these are all M, maybe we can create a separate method  
+
+
+# def create_new_rover
+
+  def go_ahead
+    if @direction == "N"
+      @y += 1
+    elsif @direction == "S"
+      @y -= 1
+    elsif @direction == "E"
+      @x += 1
+    elsif @direction == "W"
+      @x -= 1
+    end
+  end
+end
+
+grid = Grid.new(5,5)
+puts grid.size
+
+rover1 = Rover.new(1, 2, "N")
+puts rover1.initial_state
