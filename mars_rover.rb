@@ -7,7 +7,7 @@ class Grid
   end
 
   def size
-    "#{@x} #{@y}"
+    "The size of the grid: #{@x} #{@y}"
   end
 end
 
@@ -19,8 +19,8 @@ class Rover < Grid
     @direction = direction
   end
 
-  def initial_state
-    "#{@x} #{@y} #{@direction}"
+  def state
+    "Current location of Rover: #{@x} #{@y} #{@direction}"
   end
 
   def go_left
@@ -76,12 +76,18 @@ class Rover < Grid
 
 end #end class Rover
 
+#create a 5 by 5 grid
 grid = Grid.new(5,5)
 puts grid.size
 
+#create rover 
 rover1 = Rover.new(1, 2, "N")
-puts rover1.initial_state
+puts rover1.state
 
+#move rover
 rover1.move
 
-puts rover1.initial_state
+#show rover's final position and direction
+puts rover1.state
+
+
