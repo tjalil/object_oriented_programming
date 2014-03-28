@@ -19,17 +19,20 @@ class Rover
   end
 
   def grid_size
-    
+
   end
 
   def initial_state
+    puts "For the initial state of Rover we require, x, y, and direction. Pass them as such: x y direction"
+    
+
   end
 
   def motion
   end
 
-  def new_rover
-  end
+  # def new_rover
+  # end
 
 end
 

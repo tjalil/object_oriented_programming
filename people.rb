@@ -8,7 +8,6 @@ class Person
 
   def greeting
     puts "Hi my name is #{@name}"
-    puts self
   end
 
 end
