@@ -137,7 +137,7 @@ class Rover < Grid
 
 # def create_new_rover
 
-  def go_ahead
+  def go_straight
     if @direction == "N"
       @y += 1
     elsif @direction == "S"
@@ -148,6 +148,23 @@ class Rover < Grid
       @x -= 1
     end
   end
+
+  #To get the move on for the rover
+
+  #check the initial_state
+  #Input the set of directions
+  #break direction into separate elements and push them into an array
+  #run .each on that array and:
+      #If L - call method go_left
+      #if R - call method go_right
+      #if M - call method go_straight
+
+
+  def move
+    if 
+  end
+
+
 end
 
 grid = Grid.new(5,5)
